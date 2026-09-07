@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f0e8">
+<meta name="description" content="AureliaGifts — thoughtfully curated wedding gift bags, beautifully designed to replace the traditional wedding cake.">
+<title>AureliaGifts | Thoughtful Gifts, Beautiful Memories</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root{
+  --ivory:#fbf6ef; --cream:#f4eadf; --paper:#fffdf9;
+  --gold:#a9865b; --gold2:#c6a777; --rose:#c79b91;
+  --ink:#463b35; --muted:#7c6f67; --line:rgba(169,134,91,.22);
+  --shadow:0 25px 70px rgba(73,51,34,.13);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:"DM Sans",Arial,sans-serif;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(1180px,92vw);margin:auto}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+.eyebrow{letter-spacing:.22em;text-transform:uppercase;font-size:11px;color:var(--gold);font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid var(--gold);padding:14px 23px;border-radius:999px;font-weight:700;font-size:13px;transition:.3s;cursor:pointer}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:white}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(70,59,53,.2)}
+.btn.ghost{background:rgba(255,255,255,.45)}
+.btn.ghost:hover{background:white;transform:translateY(-2px)}
+header{position:fixed;top:0;left:0;right:0;z-index:50;transition:.35s}
+header.scrolled{background:rgba(251,246,239,.86);backdrop-filter:blur(18px);box-shadow:0 1px 0 var(--line)}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between}
+.logo-mini{width:58px;height:58px;border-radius:50%;object-fit:cover;border:1px solid rgba(169,134,91,.3)}
+.navlinks{display:flex;gap:28px;font-size:12px;font-weight:700;letter-spacing:.06em}
+.navlinks a{position:relative}
+.navlinks a:after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--gold);transition:.25s}
+.navlinks a:hover:after{right:0}
+.navcta{display:flex;gap:10px;align-items:center}
+.menu{display:none;border:0;background:none;font-size:25px}
+
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;padding-top:90px;overflow:hidden;background:linear-gradient(90deg,rgba(251,246,239,.97) 0%,rgba(251,246,239,.88) 45%,rgba(251,246,239,.22) 100%),url('assets/wedding-gifts.jpg') center/cover no-repeat}
+.hero:before{content:"";position:absolute;width:700px;height:700px;border-radius:50%;right:-220px;top:80px;background:radial-gradient(circle,rgba(199,155,145,.18),transparent 67%)}
+.hero:after{content:"";position:absolute;width:600px;height:600px;border-radius:50%;left:-280px;bottom:-200px;background:radial-gradient(circle,rgba(198,167,119,.14),transparent 67%)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;position:relative;z-index:2}
+.hero-copy{max-width:600px}
+.hero h1{font-size:clamp(54px,7vw,92px);line-height:.87;font-weight:500;margin:17px 0 25px;letter-spacing:-.045em}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{font-size:16px;line-height:1.8;color:var(--muted);max-width:560px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.trust{display:flex;gap:22px;margin-top:38px;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.trust span{display:flex;align-items:center;gap:7px}.dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+.scene-wrap{height:620px;display:grid;place-items:center;perspective:1300px}
+.scene{width:410px;height:500px;position:relative;transform-style:preserve-3d;transition:transform .1s linear}
+.orbit{position:absolute;inset:25px;border:1px solid rgba(169,134,91,.24);border-radius:50%;transform:rotateX(68deg) rotateZ(12deg);box-shadow:0 0 0 24px rgba(169,134,91,.025)}
+.glow{position:absolute;inset:70px;background:radial-gradient(circle,rgba(199,155,145,.24),transparent 63%);filter:blur(8px)}
+.bag{position:absolute;width:270px;height:325px;left:70px;top:105px;transform-style:preserve-3d;transform:rotateY(-12deg) rotateX(3deg);filter:drop-shadow(0 35px 25px rgba(72,48,31,.16))}
+.bag-body{position:absolute;inset:55px 0 0;border-radius:18px 18px 38px 38px;background:linear-gradient(135deg,#eadcc9,#cdb49a 48%,#b89877);border:1px solid rgba(116,84,51,.28);box-shadow:inset 15px 0 30px rgba(255,255,255,.28),inset -20px -15px 35px rgba(75,48,30,.12)}
+.bag-top{position:absolute;top:40px;left:24px;width:222px;height:70px;background:linear-gradient(160deg,#f5eadc,#c8a98a);clip-path:polygon(8% 0,92% 0,100% 72%,78% 100%,22% 100%,0 72%);border-radius:50%}
+.handle{position:absolute;top:0;left:74px;width:120px;height:90px;border:9px solid #c5a787;border-bottom:0;border-radius:65px 65px 0 0;opacity:.85}
+.ribbon{position:absolute;left:88px;top:102px;width:94px;height:30px;border-radius:0 0 18px 18px;background:rgba(255,244,230,.5);border:1px solid rgba(130,94,61,.15)}
+.tag{position:absolute;z-index:4;left:83px;top:170px;background:#fff9f0;padding:12px 14px;border:1px solid rgba(169,134,91,.25);transform:rotate(-3deg);box-shadow:0 10px 25px rgba(72,48,31,.12);font-family:"Cormorant Garamond";font-size:21px;color:#9b7654}
+.flower{position:absolute;width:85px;height:150px;opacity:.7}
+.flower:before{content:"✽";font-size:62px;color:#b99a79}
+.flower.f1{left:15px;top:175px;transform:rotate(-22deg)}
+.flower.f2{right:8px;top:140px;transform:rotate(23deg)}
+.photo-scene{width:min(560px,100%);height:620px;border-radius:28px;overflow:visible}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:28px;box-shadow:0 35px 80px rgba(73,51,34,.20);border:1px solid rgba(169,134,91,.2)}
+.photo-scene:after{content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.55);border-radius:22px;pointer-events:none}
+.float-card{position:absolute;background:rgba(255,253,249,.82);backdrop-filter:blur(12px);border:1px solid rgba(169,134,91,.2);padding:12px 15px;border-radius:15px;box-shadow:var(--shadow);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.fc1{right:0;top:100px}.fc2{left:0;bottom:95px}
+
+.section{padding:115px 0;position:relative}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:45px}
+.section-head h2{font-size:clamp(44px,5vw,66px);line-height:.9;font-weight:500;margin:12px 0 0;letter-spacing:-.035em}
+.section-head p{max-width:450px;color:var(--muted);line-height:1.7;font-size:14px}
+
+.story{background:#f3e8dc}
+.story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
+.story-card{background:var(--paper);padding:45px;border:1px solid var(--line);box-shadow:var(--shadow);position:relative}
+.story-card h3{font-size:42px;line-height:.95;font-weight:500;margin:15px 0}
+.story-card p{color:var(--muted);line-height:1.85}
+.checks{display:grid;gap:14px;margin:28px 0}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:13px}.check b{color:var(--gold)}
+.quote{font-family:"Cormorant Garamond";font-size:27px;line-height:1.2;color:#70594b;margin-top:30px}
+
+.collections{background:var(--ivory)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.card{position:relative;min-height:470px;padding:28px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(145deg,#fffdf9,#f2e5d8);transition:.4s;display:flex;flex-direction:column;justify-content:flex-end}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+.card:nth-child(2){background:linear-gradient(145deg,#fbf1e7,#ead8c8)}
+.card:nth-child(3){background:linear-gradient(145deg,#f8ede8,#d8c0b4)}
+.card:nth-child(4){background:linear-gradient(145deg,#fff9ee,#dfcba9)}
+.card .num{position:absolute;top:22px;left:24px;font-size:11px;color:var(--gold);letter-spacing:.15em}
+.mini-bag{position:absolute;width:155px;height:190px;left:50%;top:80px;transform:translateX(-50%);border-radius:13px 13px 23px 23px;background:linear-gradient(145deg,#ead9c7,#bfa182);box-shadow:0 25px 35px rgba(73,51,34,.16)}
+.mini-bag:before{content:"";position:absolute;left:38px;top:-35px;width:80px;height:65px;border:7px solid #c5a787;border-bottom:0;border-radius:50px 50px 0 0}
+.card h3{font-family:"Cormorant Garamond";font-size:43px;font-weight:500;margin:0 0 7px}
+.card p{font-size:12px;line-height:1.7;color:var(--muted);margin:0 0 18px}
+.card .learn{font-size:11px;text-transform:uppercase;letter-spacing:.13em;font-weight:700;color:var(--gold)}
+
+.process{background:#2f2925;color:#f9f2e9}
+.process .eyebrow{color:#d7b982}.process .section-head p{color:#c8bcb1}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.12)}
+.step{padding:38px 28px;background:#2f2925;min-height:245px}
+.step span{font-family:"Cormorant Garamond";font-size:52px;color:#d5b37c}
+.step h3{font-family:"Cormorant Garamond";font-size:29px;font-weight:500;margin:18px 0 10px}
+.step p{color:#b9aea5;font-size:12px;line-height:1.7}
+
+.custom{background:#eadbd0}
+.custom-box{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.custom-visual{min-height:470px;position:relative;display:grid;place-items:center}
+.custom-ring{position:absolute;width:390px;height:390px;border:1px solid rgba(169,134,91,.28);border-radius:50%;box-shadow:0 0 0 40px rgba(255,255,255,.14)}
+.custom-bag{width:230px;height:285px;border-radius:18px 18px 35px 35px;background:linear-gradient(145deg,#f5eadc,#b79776);position:relative;box-shadow:0 40px 45px rgba(75,51,34,.2);transform:rotate(-5deg)}
+.custom-bag:before{content:"AURELIA";position:absolute;left:50%;top:100px;transform:translateX(-50%);font-family:"Cormorant Garamond";letter-spacing:.16em;font-size:23px;color:#806248}
+.custom-bag:after{content:"";position:absolute;width:90px;height:60px;left:70px;top:-50px;border:7px solid #c5a787;border-bottom:0;border-radius:50px 50px 0 0}
+.custom-copy h2{font-size:clamp(48px,6vw,78px);font-weight:500;line-height:.88;margin:15px 0 25px}
+.custom-copy p{color:var(--muted);line-height:1.8;max-width:500px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:25px 0}.pill{border:1px solid rgba(169,134,91,.35);padding:9px 13px;border-radius:999px;font-size:11px;background:rgba(255,255,255,.3)}
+
+.testimonials{background:#fffaf4}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.test{padding:30px;border:1px solid var(--line);background:white;min-height:220px}
+.stars{color:#b18a5f;letter-spacing:.1em}.test p{font-family:"Cormorant Garamond";font-size:23px;line-height:1.25}.test small{color:var(--muted)}
+
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
+.faq h2{font-size:clamp(48px,6vw,75px);font-weight:500;line-height:.9;margin:12px 0}
+.faq-item{border-bottom:1px solid var(--line)}.faq-q{padding:22px 0;display:flex;justify-content:space-between;cursor:pointer;font-weight:700;font-size:14px}.faq-a{max-height:0;overflow:hidden;color:var(--muted);font-size:13px;line-height:1.7;transition:max-height .35s}.faq-item.open .faq-a{max-height:160px;padding:0 0 22px}.faq-q span{font-size:20px;color:var(--gold)}
+
+.cta{padding:105px 0;background:linear-gradient(135deg,#f1e3d8,#e5d0c5);text-align:center}
+.cta h2{font-size:clamp(55px,8vw,100px);font-weight:500;line-height:.83;margin:15px auto 25px;max-width:900px}
+.cta p{color:var(--muted);max-width:580px;margin:0 auto 28px;line-height:1.8}
+
+footer{padding:55px 0 25px;background:#2f2925;color:#f7eee4}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:45px;border-bottom:1px solid rgba(255,255,255,.12)}
+.footer-logo{width:82px;height:82px;border-radius:50%;object-fit:cover;margin-bottom:18px}
+footer p,footer a{color:#bdb1a7;font-size:12px;line-height:1.8}footer h4{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#d7b982}
+.socials{display:flex;gap:10px;flex-wrap:wrap}.social{border:1px solid rgba(255,255,255,.15);padding:9px 13px;border-radius:999px}
+.copyright{padding-top:20px;color:#887c73;font-size:10px;display:flex;justify-content:space-between}
+
+.whatsapp{position:fixed;right:22px;bottom:22px;z-index:60;width:57px;height:57px;border-radius:50%;display:grid;place-items:center;background:#263b2c;color:white;box-shadow:0 14px 35px rgba(36,51,40,.3);font-weight:800;font-size:20px;transition:.25s}.whatsapp:hover{transform:scale(1.07)}
+
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .8s ease,transform .8s ease}.reveal.show{opacity:1;transform:none}
+
+@media(max-width:900px){
+ .navlinks{display:none}.navcta .btn.ghost{display:none}.menu{display:block}
+ .hero-grid,.story-grid,.custom-box,.faq{grid-template-columns:1fr}.hero{padding-top:120px}.scene-wrap{height:520px}.scene{transform:scale(.82)}
+ .cards{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}.test-grid{grid-template-columns:1fr}
+ .footer-grid{grid-template-columns:1fr 1fr}.section{padding:85px 0}
+}
+@media(max-width:560px){
+ .nav{height:68px}.logo-mini{width:50px;height:50px}.hero h1{font-size:57px}.hero p{font-size:14px}.trust{flex-direction:column;gap:8px}
+ .scene-wrap{height:430px}.scene{transform:scale(.63)}.fc1{right:-5px}.fc2{left:-5px}
+ .section-head{display:block}.section-head p{margin-top:20px}.cards{grid-template-columns:1fr}.card{min-height:400px}
+ .steps{grid-template-columns:1fr}.custom-visual{min-height:360px}.custom-ring{width:290px;height:290px}.custom-bag{width:185px;height:235px}
+ .footer-grid{grid-template-columns:1fr}.copyright{display:block}.copyright span{display:block;margin-top:8px}
+ .hero-actions .btn{width:100%}
+}
+</style>
+</head>
+<body>
+<header id="header">
+ <div class="container nav">
+  <a href="#top"><img class="logo-mini" src="assets/logo.jpg" alt="AureliaGifts logo"></a>
+  <nav class="navlinks">
+   <a href="#collections">Collections</a><a href="#story">Our Story</a><a href="#how">How It Works</a><a href="#custom">Create Your Own</a><a href="#gallery">Gallery</a><a href="#faq">FAQ</a>
+  </nav>
+  <div class="navcta"><a class="btn primary" href="https://wa.me/94774436970?text=Hi%20AureliaGifts!%20I'd%20like%20to%20know%20more%20about%20your%20wedding%20gift%20bags." target="_blank" rel="noopener">WhatsApp Us</a><button class="menu" onclick="document.querySelector('.navlinks').style.display=document.querySelector('.navlinks').style.display==='flex'?'none':'flex'">☰</button></div>
+ </div>
+</header>
+
+<main id="top">
+<section class="hero">
+ <div class="container hero-grid">
+  <div class="hero-copy reveal">
+   <div class="eyebrow">Wedding gifting, reimagined</div>
+   <h1>Give them a <em>memory</em> to take home.</h1>
+   <p>Beautifully curated wedding gift bags, thoughtfully designed as a memorable alternative to the traditional wedding cake — made for couples who want their guests to feel truly special.</p>
+   <div class="hero-actions">
+    <a class="btn primary" href="#collections">Explore Collections →</a>
+    <a class="btn ghost" href="#custom">Create Your Own</a>
+   </div>
+   <div class="trust"><span><i class="dot"></i> Curated with love</span><span><i class="dot"></i> Made for your celebration</span></div>
+  </div>
+  <div class="scene-wrap reveal">
+   <div class="scene photo-scene" id="scene">
+    <img class="hero-photo" src="assets/wedding-gifts.jpg" alt="AureliaGifts wedding gift bag">
+    <div class="float-card fc1">A gift worth remembering</div>
+    <div class="float-card fc2">MINI · CLASSIC · LUXE</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section story" id="story">
+ <div class="container story-grid">
+  <div class="reveal">
+   <div class="eyebrow">The Aurelia difference</div>
+   <h2 class="serif" style="font-size:clamp(52px,6vw,78px);line-height:.88;font-weight:500;margin:15px 0">Not just a favour.<br><i>A little piece of your day.</i></h2>
+  </div>
+  <div class="story-card reveal">
+   <div class="eyebrow">Why couples choose us</div>
+   <h3 class="serif">A wedding gift your guests will actually remember.</h3>
+   <p>Instead of another slice of cake that disappears by the end of the night, give your guests something beautifully presented, useful and personal.</p>
+   <div class="checks">
+    <div class="check"><b>01</b><span>Elegant presentation designed to complement your wedding.</span></div>
+    <div class="check"><b>02</b><span>Curated options for different budgets and styles.</span></div>
+    <div class="check"><b>03</b><span>Personal touches available through our custom collection.</span></div>
+   </div>
+   <div class="quote">“Thoughtful gifts, beautiful memories.”</div>
+  </div>
+ </div>
+</section>
+
+<section class="section collections" id="collections">
+ <div class="container">
+  <div class="section-head reveal">
+   <div><div class="eyebrow">Choose your experience</div><h2 class="serif">Four ways to say<br><i>thank you.</i></h2></div>
+   <p>Whether you are planning an intimate celebration or a grand wedding, there is an AureliaGifts collection made for your moment.</p>
+  </div>
+  <div class="cards">
+   <article class="card reveal"><span class="num">01 —</span><div class="mini-bag"></div><h3>Mini</h3><p>Simple, elegant and thoughtful — the perfect little gesture for every guest.</p><a class="learn" href="https://wa.me/94774436970?text=Hi%20AureliaGifts!%20I'm%20interested%20in%20the%20MINI%20wedding%20gift%20bag." target="_blank">Enquire about Mini →</a></article>
+   <article class="card reveal"><span class="num">02 —</span><div class="mini-bag"></div><h3>Classic</h3><p>Our signature collection — beautifully balanced, memorable and made for weddings.</p><a class="learn" href="https://wa.me/94774436970?text=Hi%20AureliaGifts!%20I'm%20interested%20in%20the%20CLASSIC%20wedding%20gift%20bag." target="_blank">Enquire about Classic →</a></article>
+   <article class="card reveal"><span class="num">03 —</span><div class="mini-bag"></div><h3>Luxe</h3><p>An elevated experience for couples who want their guest gifts to feel extraordinary.</p><a class="learn" href="https://wa.me/94774436970?text=Hi%20AureliaGifts!%20I'm%20interested%20in%20the%20LUXE%20wedding%20gift%20bag." target="_blank">Enquire about Luxe →</a></article>
+   <article class="card reveal"><span class="num">04 —</span><div class="mini-bag"></div><h3>Your Own</h3><p>Choose the details, the feel and the little surprises. Make it unmistakably yours.</p><a class="learn" href="#custom">Start creating →</a></article>
+  </div>
+ </div>
+</section>
+
+<section class="section process" id="how">
+ <div class="container">
+  <div class="section-head reveal"><div><div class="eyebrow">Simple from start to finish</div><h2 class="serif">Your wedding.<br>Your way.</h2></div><p>We make gifting easy, so you can spend your time enjoying the moments that matter.</p></div>
+  <div class="steps">
+   <div class="step reveal"><span>01</span><h3>Choose your style</h3><p>Explore Mini, Classic, Luxe or decide to create something completely personal.</p></div>
+   <div class="step reveal"><span>02</span><h3>Tell us your details</h3><p>Share your date, guest count, colour palette and the feeling you want to create.</p></div>
+   <div class="step reveal"><span>03</span><h3>We curate it</h3><p>Our team helps you bring the bag together with thoughtful details and beautiful presentation.</p></div>
+   <div class="step reveal"><span>04</span><h3>Make the moment</h3><p>Your guests receive a gift designed to turn a beautiful celebration into a lasting memory.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section custom" id="custom">
+ <div class="container custom-box">
+  <div class="custom-visual reveal"><div class="custom-ring"></div><div class="custom-bag"></div></div>
+  <div class="custom-copy reveal">
+   <div class="eyebrow">Made for you</div>
+   <h2 class="serif">Create a bag as <i>unique</i> as your day.</h2>
+   <p>Have something special in mind? Tell us your vision and we'll help you build a gift bag around your wedding theme, guest experience and budget.</p>
+   <div class="pills"><span class="pill">Colours</span><span class="pill">Personal notes</span><span class="pill">Curated items</span><span class="pill">Wedding themes</span><span class="pill">Custom quantities</span></div>
+   <a class="btn primary" href="https://wa.me/94774436970?text=Hi%20AureliaGifts!%20I'd%20like%20to%20CREATE%20MY%20OWN%20wedding%20gift%20bag.%20Can%20you%20help%20me%20design%20it%3F" target="_blank">Create My Bag on WhatsApp →</a>
+  </div>
+ </div>
+</section>
+
+
+<section class="section" id="gallery">
+ <div class="container">
+  <div class="section-head reveal">
+   <div><div class="eyebrow">AureliaGifts in real moments</div><h2 class="serif">A little beauty<br><i>in every detail.</i></h2></div>
+   <p>Use this space for your own Mini, Classic and Luxe product photography. Real product photos will make the collections even more persuasive.</p>
+  </div>
+  <div class="cards" style="grid-template-columns:repeat(3,1fr)">
+   <article class="card reveal" style="min-height:430px;background:url('assets/wedding-gifts.jpg') center/cover"><div style="position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(47,41,37,.72))"></div><div style="position:relative;color:white"><span class="eyebrow" style="color:#f5d8ad">01</span><h3>Mini Moments</h3><p style="color:#f4ebe3">A thoughtful little thank-you for every guest.</p></div></article>
+   <article class="card reveal" style="min-height:430px;background:url('assets/wedding-gifts.jpg') 35% center/cover"><div style="position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(47,41,37,.72))"></div><div style="position:relative;color:white"><span class="eyebrow" style="color:#f5d8ad">02</span><h3>Classic Elegance</h3><p style="color:#f4ebe3">Our signature wedding guest experience.</p></div></article>
+   <article class="card reveal" style="min-height:430px;background:url('assets/wedding-gifts.jpg') 70% center/cover"><div style="position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(47,41,37,.72))"></div><div style="position:relative;color:white"><span class="eyebrow" style="color:#f5d8ad">03</span><h3>Luxe Details</h3><p style="color:#f4ebe3">A premium gesture for an unforgettable day.</p></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="section testimonials">
+ <div class="container">
+  <div class="section-head reveal"><div><div class="eyebrow">A little love</div><h2 class="serif">Made to be<br><i>remembered.</i></h2></div><p>Replace these sample quotes with real customer reviews as AureliaGifts grows.</p></div>
+  <div class="test-grid">
+   <div class="test reveal"><div class="stars">★★★★★</div><p>“The presentation made our wedding favours feel so much more special.”</p><small>— Happy couple · Colombo</small></div>
+   <div class="test reveal"><div class="stars">★★★★★</div><p>“Every little detail felt intentional. Our guests loved taking them home.”</p><small>— Happy couple · Sri Lanka</small></div>
+   <div class="test reveal"><div class="stars">★★★★★</div><p>“Beautiful, elegant and completely different from the usual wedding cake.”</p><small>— Happy couple · Sri Lanka</small></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="faq">
+ <div class="container faq">
+  <div class="reveal"><div class="eyebrow">Questions, answered</div><h2 class="serif">Before you<br><i>order.</i></h2><p style="color:var(--muted);line-height:1.8;font-size:13px">Don't see your question? Message us directly and we'll help you plan.</p><a class="btn ghost" href="https://wa.me/94774436970?text=Hi%20AureliaGifts!%20I%20have%20a%20question%20about%20wedding%20gift%20bags." target="_blank">Ask on WhatsApp</a></div>
+  <div class="reveal">
+   <div class="faq-item open"><div class="faq-q">What are AureliaGifts wedding bags? <span>−</span></div><div class="faq-a">They are curated wedding guest gifts designed as a beautiful alternative to the traditional wedding cake or favour. Each bag can be tailored to your celebration.</div></div>
+   <div class="faq-item"><div class="faq-q">Can I customise the contents? <span>+</span></div><div class="faq-a">Yes. Our Create Your Own option lets you discuss colours, items, personal notes and other details with our team.</div></div>
+   <div class="faq-item"><div class="faq-q">How do I place an order? <span>+</span></div><div class="faq-a">Message us on WhatsApp with your wedding date, approximate guest count and preferred collection. We'll guide you through the next steps.</div></div>
+   <div class="faq-item"><div class="faq-q">Can you make bags for large weddings? <span>+</span></div><div class="faq-a">Yes. Send us your expected quantity and event details and we'll discuss what works best for your celebration.</div></div>
+   <div class="faq-item"><div class="faq-q">How far in advance should I contact you? <span>+</span></div><div class="faq-a">The earlier the better, especially for larger quantities or custom requests. Contact us with your date and we'll advise you on timing.</div></div>
+  </div>
+ </div>
+</section>
+
+<section class="cta">
+ <div class="container reveal">
+  <div class="eyebrow">Your guests deserve more than a slice</div>
+  <h2 class="serif">Give them something they'll <i>remember.</i></h2>
+  <p>Tell us about your wedding and let's create a beautiful AureliaGifts experience for your guests.</p>
+  <a class="btn primary" href="https://wa.me/94774436970?text=Hi%20AureliaGifts!%20I'm%20planning%20a%20wedding%20and%20I'd%20love%20to%20discuss%20your%20gift%20bags." target="_blank">Start a Conversation on WhatsApp →</a>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <div class="footer-grid">
+   <div><img class="footer-logo" src="assets/logo.jpg" alt="AureliaGifts"><div class="eyebrow">Thoughtful gifts, beautiful memories.</div><p>Beautifully curated wedding gift bags for celebrations that deserve to be remembered.</p></div>
+   <div><h4>Explore</h4><p><a href="#collections">Collections</a><br><a href="#custom">Create Your Own</a><br><a href="#how">How It Works</a><br><a href="#faq">FAQ</a></p></div>
+   <div><h4>Connect</h4><p><a href="https://wa.me/94774436970" target="_blank">WhatsApp · 077 443 6970</a></p><div class="socials"><a class="social" href="https://www.instagram.com/aurelia__memento?igsi=MWE0NWl5NjR0MXM1Yw%3D%3D&utm_source=qr" target="_blank">Instagram</a><a class="social" href="https://www.tiktok.com/@aureliamemento?_r=1&_t=ZS-99RopXkQRfA" target="_blank">TikTok</a></div></div>
+  </div>
+  <div class="copyright"><span>© 2026 AureliaGifts. All rights reserved.</span><span>Designed for beautiful celebrations.</span></div>
+ </div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/94774436970?text=Hi%20AureliaGifts!%20I'd%20like%20to%20know%20more%20about%20your%20wedding%20gift%20bags." target="_blank" rel="noopener" aria-label="Chat with AureliaGifts on WhatsApp">◔</a>
+
+<script>
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>{
+ header.classList.toggle('scrolled',scrollY>25);
+ const scene=document.getElementById('scene');
+ if(scene){
+   const y=scrollY;
+   const rot=Math.max(-16,Math.min(16,y*.035));
+   const lift=Math.min(22,y*.025);
+   scene.style.transform=`rotateY(${rot}deg) translateY(${lift}px)`;
+ }
+},{passive:true});
+
+const obs=new IntersectionObserver((entries)=>{
+ entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+document.querySelectorAll('.faq-q').forEach(q=>{
+ q.addEventListener('click',()=>{
+  const item=q.parentElement, open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q span').textContent='+'});
+  if(!open){item.classList.add('open');q.querySelector('span').textContent='−'}
+ });
+});
+</script>
+</body>
+</html>
